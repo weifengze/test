@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "xss.enabled",
+      "type": "java.lang.String",
+      "description": "Description for xss.enabled."
+    },
+    {
+      "name": "spring.datasource.druid.password.statViewServlet.login-password",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.druid.password.statViewServlet.login-password."
+    }
+  ] }

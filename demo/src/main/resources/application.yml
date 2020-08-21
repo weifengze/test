@@ -1,0 +1,114 @@
+# 项目相关配置
+project:
+  # 文件路径 示例（ Windows配置E:/uploadPath，Linux配置 /home/bjjh/uploadPath）
+  profile: E:/uploadPath
+  # 获取ip地址开关
+  addressEnabled: true
+
+server:
+  port: 80
+  tomcat:
+    uri-encoding: UTF-8
+    threads:
+      max: 800
+      min-spare: 30
+  servlet:
+    context-path: /
+
+# 日志配置
+logging:
+  level:
+    org.springframework: warn
+
+spring:
+  # 模板引擎
+  thymeleaf:
+    mode: HTML
+    encoding: utf-8
+    # 禁用缓存
+    cache: false
+  messages:
+    basename: static/i18n/messages
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  profiles:
+    active: druid
+  servlet:
+    multipart:
+      # 单个文件大小
+      max-file-size: 100MB
+      # 设置总上传的文件大小
+      max-request-size: 200MB
+  devtools:
+    restart:
+      # 热部署
+      enabled: true
+  redis:
+    # 缓存开启开关
+    enabled: true
+    database: 2
+    password:
+    host: 127.0.0.1
+    port: 6379
+    lettuce:
+      pool:
+        max-active: 100
+        max-idle: 100
+        min-idle: 50
+        max-wait: 6000
+    timeout: 1000
+mybatis:
+  typeAliasesPackage: com.zicms.**.model
+  mapperLocations: classpath*:mapper/**/*Mapper.xml
+  configLocation: classpath:mybatis/mybatis-config.xml
+
+# PageHelper分页插件
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+## 防止XSS攻击
+#xss:
+#  # 过滤开关
+#  enabled: true
+#  # 排除链接（多个用逗号分隔）
+#  excludes: /system/notice/*
+#  # 匹配链接
+#  urlPatterns: /system/*,/monitor/*,/tool/*
+
+## Shiro
+#shiro:
+#  user:
+#    # 登录地址
+#    loginUrl: /login
+#    # 权限认证失败地址
+#    unauthorizedUrl: /unauth
+#    # 首页地址
+#    indexUrl: /index
+#    # 验证码开关
+#    captchaEnabled: false
+#    # 验证码类型 math 数组计算 char 字符
+#    captchaType: math
+#  cookie:
+#    # 设置Cookie的域名 默认空，即当前访问的域名
+#    domain:
+#    # 设置cookie的有效访问路径
+#    path: /
+#    # 设置HttpOnly属性
+#    httpOnly: true
+#    # 设置Cookie的过期时间，天为单位
+#    maxAge: 30
+#  session:
+#    # Session超时时间，-1代表永不过期（默认30分钟）
+#    expireTime: 30
+#    # 同步session到数据库的周期（默认1分钟）
+#    dbSyncPeriod: 1
+#    # 相隔多久检查一次session的有效性，默认就是10分钟
+#    validationInterval: 10
+#    # 同一个用户最大会话数，比如2的意思是同一个账号允许最多同时两个人登录（默认-1不限制）
+#    maxSession: -1
+#    # 踢出之前登录的/之后登录的用户，默认踢出之前登录的用户
+#    kickoutAfter: false
